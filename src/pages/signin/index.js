@@ -14,7 +14,6 @@ export function SignIn({ navigation: { navigate } }) {
       alert("Fill all field.");
       return false;
     }
-
     try {
       const { data: users } = await api.get("/users", {
         params: {
@@ -28,8 +27,6 @@ export function SignIn({ navigation: { navigate } }) {
         alert("User not found");
         return false;
       }
-
-      console.log(userData);
     } catch (err) {
       alert(err.message);
     }
