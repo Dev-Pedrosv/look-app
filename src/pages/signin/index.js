@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Box, Button, Input, Spacer, Text, Title } from "../../styles";
 import { StatusBar } from "expo-status-bar";
 import api from "../../services/api";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export function SignIn({ navigation: { navigate } }) {
+import { AppContext } from "../../contexts/app";
+
+export function SignIn({ navigation: { navigate, replace } }) {
+  const { setUser: setUserContext } = useContext(AppContext);
+
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -17,7 +22,7 @@ export function SignIn({ navigation: { navigate } }) {
     try {
       const { data: users } = await api.get("/users", {
         params: {
-          email: user.email,
+          email: user.email?.toLowerCase(),
           password: user.password,
         },
       });
@@ -27,6 +32,11 @@ export function SignIn({ navigation: { navigate } }) {
         alert("User not found");
         return false;
       }
+
+      await AsyncStorage.setItem("@user", JSON.stringify(loggedUser));
+      setUserContext(loggedUser);
+      console.log("aqui");
+      replace("Feed");
     } catch (err) {
       alert(err.message);
     }
