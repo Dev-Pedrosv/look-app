@@ -2,11 +2,11 @@ import React from "react";
 import { Post } from "..";
 import { Box, Text, ScrollView } from "../../../styles";
 
-export function PostList() {
+export function PostList({ posts }) {
   return (
-    <Box hasPadding>
-      {Array.from(Array(20))?.map((item) => (
-        <Post>Post</Post>
+    <Box style={{ minWidth: "100%" }} hasPadding>
+      {posts?.map((post) => (
+        <Post post={post} />
       ))}
     </Box>
   );

@@ -3,7 +3,6 @@ import { Box, Button, Input, Spacer, Text, Title } from "../../styles";
 import { StatusBar } from "expo-status-bar";
 import api from "../../services/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import { AppContext } from "../../contexts/app";
 
 export function SignIn({ navigation: { navigate, replace } }) {
@@ -35,7 +34,6 @@ export function SignIn({ navigation: { navigate, replace } }) {
 
       await AsyncStorage.setItem("@user", JSON.stringify(loggedUser));
       setUserContext(loggedUser);
-      console.log("aqui");
       replace("Feed");
     } catch (err) {
       alert(err.message);

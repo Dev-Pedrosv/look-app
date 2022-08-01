@@ -1,10 +1,9 @@
 import React from "react";
 import { Box, Cover, Text, Touchable } from "../../styles";
 import { colors } from "../../styles/theme.json";
+import moment from "moment";
 
-const IMAGE = "https://github.com/Dev-Pedrosv.png";
-
-export function Story() {
+export function Story({ story }) {
   return (
     <Touchable
       background="black"
@@ -13,7 +12,7 @@ export function Story() {
       spacing="0px 10px 0px"
       width="150px"
     >
-      <Cover width="100%" height="100%" image={IMAGE}>
+      <Cover width="100%" height="100%" image={story?.cover}>
         <Box
           fluid
           hasPadding
@@ -25,15 +24,15 @@ export function Story() {
             width="40px"
             height="40px"
             border={`1px solid ${colors.light}`}
-            image={IMAGE}
+            image={story?.owner?.photo}
           />
 
           <Box height="50px" justify="flex-end">
             <Text bold color="light">
-              @Pedro_dev
+              {story?.owner?.username}
             </Text>
             <Text variant="small" color="light">
-              2 mins ago
+              {moment(story?.createdAt).fromNow()}
             </Text>
           </Box>
         </Box>

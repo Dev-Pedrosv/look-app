@@ -72,18 +72,6 @@
       "name": "Omar Sampaio",
       "email": "omar@teste.com",
       "password": "123"
-    },
-    {
-      "id": 3,
-      "name": "TEste 1",
-      "email": "Teste1@teste.com",
-      "password": "123"
-    },
-    {
-      "id": 4,
-      "name": "Usuário Criado",
-      "email": "criado@teste.com",
-      "password": "123"
     }
   ],
   "products": [

@@ -2,21 +2,23 @@ import React from "react";
 import { Box, Text, Cover, Touchable, Spacer } from "../../styles";
 import Icon from "react-native-vector-icons/SimpleLineIcons";
 import { colors } from "../../styles/theme.json";
+import moment from "moment";
+import { color } from "react-native-reanimated";
 
 const IMAGE = "https://github.com/Dev-Pedrosv.png";
 const POST =
   "https://i.pinimg.com/564x/f2/4e/a7/f24ea73f94c7342e61cd640ea17c62ae.jpg";
 
-export function Post() {
+export function Post({ post }) {
   return (
     <Box hasPadding fluid>
       <Box row align="center">
-        <Cover width="40px" height="40px" circle image={IMAGE} />
+        <Cover width="40px" height="40px" circle image={post?.owner?.photo} />
         <Box spacing="0px 0px 0px 10px">
           <Text bold color="dark">
-            @Pedro_dev
+            {post?.owner?.username}
           </Text>
-          <Text variant="small">2 mins ago</Text>
+          <Text variant="small"> {moment(post?.createdAt).fromNow()}</Text>
         </Box>
         <Touchable height="30px" width="100px" align="flex-end">
           <Icon name="options" size={15} color={colors.muted} />
@@ -24,7 +26,7 @@ export function Post() {
       </Box>
 
       <Cover
-        image={POST}
+        image={post?.cover}
         width="100%"
         height="190px"
         spacing="10px 0px"
@@ -32,24 +34,27 @@ export function Post() {
       />
       <Box row fluid align="center">
         <Box row fluid align="center">
-          {Array.from(Array(3))?.map((item) => (
+          {post?.likeInfos?.photos.map((photos) => (
             <Cover
               circle
               width="30px"
               height="30px"
               border={`1px solid ${colors.light}`}
-              image={IMAGE}
+              image={photos}
               spacing="0px -15px 0px 0px"
             />
           ))}
-
           <Text variant="small" spacing="0px 0px 0px 20px">
-            Liked by 10,098
+            {post?.likeInfos?.description}
           </Text>
         </Box>
         <Box row justify="flex-end">
           <Touchable width="24px" spacing="0px 15px 0px 0px">
-            <Icon name="heart" size={24} color={colors.danger} />
+            <Icon
+              name="heart"
+              size={24}
+              color={post?.isLiked ? colors.danger : colors.muted}
+            />
           </Touchable>
           <Touchable width="24px" spacing="0px 15px 0px 0px">
             <Icon name="bubble" size={24} color={colors.muted} />
@@ -62,8 +67,7 @@ export function Post() {
       <Spacer />
 
       <Text color="dark" variant="small">
-        Interview: Shoe Designer John Fluevog On New Book, Spirituality And
-        ‘Slow Fashion’
+        {post?.description}
       </Text>
     </Box>
   );
