@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StretchyScrollView } from "react-native-stretchy";
 import Icon from "react-native-vector-icons/SimpleLineIcons";
+
+import { AppContext } from "../../../contexts/app";
 
 import { Header } from "../../../components/header";
 import {
@@ -17,59 +19,68 @@ import util from "../../../utils/util";
 import { colors } from "../../../styles/theme.json";
 import { Picker } from "../../../components/picker";
 
-const IMAGE =
-  "https://i.pinimg.com/564x/f2/4e/a7/f24ea73f94c7342e61cd640ea17c62ae.jpg";
+export function Product({ navigation, route }) {
+  const { addToCard } = useContext(AppContext);
+  const [size, setSize] = useState(null);
+  const { product } = route?.params;
 
-export function Product() {
+  useEffect(() => {
+    setSize(product?.sizes?.[0]?.value);
+  }, [product]);
+
   return (
     <>
       <Header
-        title="striped cardigan"
+        title={product?.title}
         goBack
         right={() => (
-          <Touchable hasPadding width="70px">
+          <Touchable
+            hasPadding
+            width="70px"
+            onPress={() => navigation.navigate("Cart")}
+          >
             <Icon name="bag" size={20} />
           </Touchable>
         )}
       />
       <StretchyScrollView
         image={{
-          uri: IMAGE,
+          uri: product?.cover,
         }}
         imageOverlay={<Box background={util.toAlpha(colors.dark, 40)}></Box>}
         foreground={
           <Box hasPadding justify="flex-end">
             <Title bold color="light" variant="big">
-              $1080
+              ${product?.price}
             </Title>
           </Box>
         }
       >
         <Box hasPadding background="light">
-          <Text color="black">Shirts</Text>
+          <Text color="black">{product?.type}</Text>
           <Spacer size="20px" />
-          <Title color="black">A.P.C. Collection Spring 2015</Title>
+          <Title color="black">{product?.title}</Title>
           <Spacer size="30px" />
-          <Text color="dark">
-            Enjoy the beauty of italian cotton all over your body. This item
-            will fit your body and warm you up all over and during spring. This
-            item will fit your body and warm you up all over and during spring.
-          </Text>
+          <Text color="dark">{product?.description}</Text>
           <Divider border size="1px" />
           <Spacer size="30px" />
           <Picker
             title="Size"
-            options={[
-              { label: "P", value: "P" },
-              { label: "M", value: "M" },
-              { label: "G", value: "G" },
-              { label: "XG", value: "XG" },
-            ]}
-            initialValue="M"
-            onChange={(value) => alert(value)}
+            options={product?.sizes}
+            initialValue={product?.sizes?.[0]?.value}
+            onChange={(value) => setSize(value)}
           />
           <Spacer size="30px" />
-          <Button block>
+          <Button
+            block
+            onPress={() => {
+              addToCard({
+                ...product,
+                size,
+              });
+              navigation.navigate("Cart");
+            }}
+          >
             <Text color="light">Add to Card</Text>
           </Button>
         </Box>

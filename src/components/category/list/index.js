@@ -1,9 +1,9 @@
 import React from "react";
 import { Category } from "..";
 
-import { ScrollView, Text } from "../../../styles";
+import { ScrollView } from "../../../styles";
 
-export function CaregoryList() {
+export function CategoriesList({ categories }) {
   return (
     <ScrollView
       fluid
@@ -13,8 +13,8 @@ export function CaregoryList() {
         paddingRight: 20,
       }}
     >
-      {Array.from(Array(20))?.map((item) => (
-        <Category title={`Category`} description={"Blabblabla"} />
+      {categories?.map((category, index) => (
+        <Category key={index} category={category} />
       ))}
     </ScrollView>
   );

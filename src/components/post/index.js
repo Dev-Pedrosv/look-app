@@ -3,11 +3,6 @@ import { Box, Text, Cover, Touchable, Spacer } from "../../styles";
 import Icon from "react-native-vector-icons/SimpleLineIcons";
 import { colors } from "../../styles/theme.json";
 import moment from "moment";
-import { color } from "react-native-reanimated";
-
-const IMAGE = "https://github.com/Dev-Pedrosv.png";
-const POST =
-  "https://i.pinimg.com/564x/f2/4e/a7/f24ea73f94c7342e61cd640ea17c62ae.jpg";
 
 export function Post({ post }) {
   return (
@@ -34,8 +29,9 @@ export function Post({ post }) {
       />
       <Box row fluid align="center">
         <Box row fluid align="center">
-          {post?.likeInfos?.photos.map((photos) => (
+          {post?.likeInfos?.photos.map((photos, index) => (
             <Cover
+              key={index}
               circle
               width="30px"
               height="30px"

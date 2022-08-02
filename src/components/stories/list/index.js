@@ -12,8 +12,8 @@ export function StoryList({ stories }) {
         <Text>Show All</Text>
       </Box>
       <ScrollView horizontal style={{ paddingLeft: 20 }}>
-        {stories?.map((story) => (
-          <Story story={story} />
+        {stories?.map((story, index) => (
+          <Story key={index} story={story} />
         ))}
       </ScrollView>
     </Box>

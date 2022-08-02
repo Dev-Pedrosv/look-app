@@ -15,8 +15,9 @@ export function Tabs({ tabs = [], active, onChange = (value) => {} }) {
       style={{ maxHeight: 70, backgroundColor: colors.light }}
       horizontal
     >
-      {tabs?.map((tab) => (
+      {tabs?.map((tab, index) => (
         <Touchable
+          key={index}
           hasPadding
           style={[
             {

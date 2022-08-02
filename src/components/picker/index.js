@@ -22,8 +22,9 @@ export function Picker({
       </Text>
       <Spacer />
       <Box row fluid height="50px">
-        {options?.map((opt) => (
+        {options?.map((opt, index) => (
           <Touchable
+            key={index}
             onPress={() => {
               setSelected(opt?.value);
               onChange(opt?.value);

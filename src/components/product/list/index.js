@@ -3,10 +3,7 @@ import { Product } from "..";
 
 import { ScrollView } from "../../../styles";
 
-const IMAGE =
-  "https://i.pinimg.com/564x/f2/4e/a7/f24ea73f94c7342e61cd640ea17c62ae.jpg";
-
-export function ProductList() {
+export function ProductList({ products }) {
   return (
     <ScrollView
       fluid
@@ -16,13 +13,8 @@ export function ProductList() {
         paddingRight: 20,
       }}
     >
-      {Array.from(Array(20))?.map((item) => (
-        <Product
-          cover={IMAGE}
-          brand="Raf Simons"
-          title="Large striped cardigan"
-          price="$1080"
-        />
+      {products?.map((product, index) => (
+        <Product key={index} product={product} />
       ))}
     </ScrollView>
   );
