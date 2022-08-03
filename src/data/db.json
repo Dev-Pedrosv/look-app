@@ -171,7 +171,7 @@
   "orders": [
     {
       "id": 1,
-      "userId": 1,
+      "userId": 8,
       "step": "waiting",
       "createdAt": "2022-04-21T12:32",
       "orderNumber": "1947034",
@@ -180,7 +180,7 @@
       "totalItems": 3
     },
     {
-      "userId": 3,
+      "userId": 8,
       "step": "waiting",
       "createdAt": "2022-04-22T11:42:10-03:00",
       "orderNumber": 1650637813697,
@@ -199,7 +199,7 @@
       "id": 3
     },
     {
-      "userId": 4,
+      "userId": 8,
       "step": "delivered",
       "createdAt": "2022-04-22T12:43:33-03:00",
       "orderNumber": 1650641635100,
@@ -209,7 +209,7 @@
       "id": 4
     },
     {
-      "userId": 4,
+      "userId": 8,
       "step": "canceled",
       "createdAt": "2022-04-22T12:43:33-03:00",
       "orderNumber": 1650641635100,
@@ -219,7 +219,7 @@
       "id": 4
     },
     {
-      "userId": 4,
+      "userId": 8,
       "step": "waiting",
       "createdAt": "2022-05-13T21:53:16-03:00",
       "orderNumber": 1652489372970,
@@ -227,6 +227,16 @@
       "totalValue": 982,
       "totalItems": 1,
       "id": 5
+    },
+    {
+      "userId": 8,
+      "step": "waiting",
+      "createdAt": "2022-08-03T02:23:19-03:00",
+      "orderNumber": "1659493166074",
+      "trackingNumber": "1659493399067",
+      "totalValue": "982.00",
+      "totalItems": 3,
+      "id": 6
     }
   ]
 }
