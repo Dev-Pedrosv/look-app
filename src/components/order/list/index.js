@@ -3,11 +3,11 @@ import { Order } from "..";
 
 import { ScrollView } from "../../../styles";
 
-export function OrderList() {
+export function OrderList({ orders }) {
   return (
     <ScrollView background="light" hasPadding>
-      {Array.from(Array(20))?.map((item) => (
-        <Order />
+      {orders?.map((order) => (
+        <Order order={order} />
       ))}
     </ScrollView>
   );

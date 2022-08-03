@@ -11,6 +11,96 @@ export function PaymentForm({ onChange = (creaditCard) => {} }) {
     cvv: "",
   });
 
+  const month = [
+    {
+      label: "Janeiro",
+      value: "01",
+    },
+    {
+      label: "Fevereiro",
+      value: "02",
+    },
+    {
+      label: "Março",
+      value: "03",
+    },
+    {
+      label: "Abril",
+      value: "04",
+    },
+    {
+      label: "Maio",
+      value: "05",
+    },
+    {
+      label: "Junho",
+      value: "06",
+    },
+    {
+      label: "Julho",
+      value: "07",
+    },
+    {
+      label: "Agosto",
+      value: "08",
+    },
+    {
+      label: "Setembro",
+      value: "09",
+    },
+    {
+      label: "Outubro",
+      value: "10",
+    },
+    {
+      label: "Novembro",
+      value: "11",
+    },
+    {
+      label: "Dezembro",
+      value: "12",
+    },
+  ];
+
+  const year = [
+    {
+      label: "2022",
+      value: "2022",
+    },
+    {
+      label: "2023",
+      value: "2023",
+    },
+    {
+      label: "2024",
+      value: "2024",
+    },
+    {
+      label: "2025",
+      value: "2025",
+    },
+    {
+      label: "2026",
+      value: "2026",
+    },
+    {
+      label: "2027",
+      value: "2027",
+    },
+    {
+      label: "2028",
+      value: "2028",
+    },
+    {
+      label: "2029",
+      value: "2029",
+    },
+    {
+      label: "2030",
+      value: "2030",
+    },
+  ];
+
   useEffect(() => {
     onChange(data);
   }, [data]);
@@ -19,23 +109,20 @@ export function PaymentForm({ onChange = (creaditCard) => {} }) {
     <>
       <SegmentedPicker
         ref={pickerRef}
-        onConfirm={(data) => {
+        onConfirm={(validDate) => {
           setData({
             ...data,
-            valid_date: `${data.month}/${data.year}`,
+            valid_date: `${validDate.month}/${validDate.year}`,
           });
         }}
         options={[
           {
             key: "month",
-            items: [
-              { label: "Option 1", value: "option_1" },
-              { label: "Option 2", value: "option_2" },
-            ],
+            items: month,
           },
           {
             key: "year",
-            items: [{ label: "Option 3", value: "option_3" }],
+            items: year,
           },
         ]}
       />

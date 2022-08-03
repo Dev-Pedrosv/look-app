@@ -5,6 +5,7 @@ export const AppContext = createContext({});
 const ContextProvider = ({ children }) => {
   const DISCOUNT_PERCENTAGE = 0.1;
   const DELIVERY_TAX = 10;
+  const ORDER_NUMBER = new Date().getTime();
   const [user, setUser] = useState({});
   const [cart, setCart] = useState([]);
 
@@ -39,6 +40,7 @@ const ContextProvider = ({ children }) => {
         removeToCart,
         DISCOUNT_PERCENTAGE,
         DELIVERY_TAX,
+        ORDER_NUMBER,
       }}
     >
       {children}

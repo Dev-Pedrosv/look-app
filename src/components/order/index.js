@@ -1,10 +1,28 @@
+import moment from "moment";
 import React from "react";
 import Icon from "react-native-vector-icons/SimpleLineIcons";
 import { Box, Spacer, Text, Title } from "../../styles";
 import { colors } from "../../styles/theme.json";
 import util from "../../utils/util";
 
-export function Order() {
+export function Order({ order }) {
+  const stepEnum = {
+    waiting: {
+      icon: "clock",
+      color: "warning",
+    },
+    delivered: {
+      icon: "check",
+      color: "success",
+    },
+    canceled: {
+      icon: "close",
+      color: "danger",
+    },
+  };
+
+  const stepData = stepEnum[order?.step];
+
   return (
     <Box
       hasPadding
@@ -23,10 +41,12 @@ export function Order() {
         }}
       >
         <Box row align="center">
-          <Icon name="check" size={20} color={colors.success} />
-          <Text spacing="0px 0px 0px 10px">DELIVERED</Text>
+          <Icon name="check" size={20} color={colors[stepData?.color]} />
+          <Text color={stepData?.color} spacing="0px 0px 0px 10px">
+            {order?.step?.toUpperCase()}
+          </Text>
         </Box>
-        <Text>May 13, 2016 5:08 PM</Text>
+        <Text>{moment(order?.createdAt).format("DD/MM/YYYY HH:mm")}</Text>
       </Box>
       <Box
         hasPadding
@@ -36,20 +56,20 @@ export function Order() {
           borderBottomColor: util.toAlpha(colors.muted, 50),
         }}
       >
-        <Title>Order №1947034</Title>
+        <Title>Order №{order?.orderNumber}</Title>
         <Spacer />
         <Text>
-          Tracking number: <Text color="dark">IW3475453455</Text>
+          Tracking number: <Text color="dark">{order?.trackingNumber}</Text>
         </Text>
       </Box>
       <Box hasPadding row justify="space-between" width="100%">
         <Box>
           <Text>VALUE OF ITEMS</Text>
-          <Text color="dark">$80.58</Text>
+          <Text color="dark">${order?.totalValue}</Text>
         </Box>
         <Box>
           <Text>QUANTITY</Text>
-          <Text color="dark">20 pairs</Text>
+          <Text color="dark">{order?.totalItems} pairs</Text>
         </Box>
       </Box>
     </Box>

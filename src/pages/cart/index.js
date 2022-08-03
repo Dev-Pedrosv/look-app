@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { ActivityIndicator } from "react-native";
 import { AppContext } from "../../contexts/app";
 
 import { PaymentForm } from "../../components/form/payment";
@@ -17,10 +18,18 @@ import {
   Title,
 } from "../../styles";
 
+import util from "../../utils/util";
+import api from "../../services/api";
+import moment from "moment";
+
 export function Cart() {
-  const { cart, DISCOUNT_PERCENTAGE, DELIVERY_TAX } = useContext(AppContext);
+  const { cart, user, DISCOUNT_PERCENTAGE, DELIVERY_TAX, ORDER_NUMBER } =
+    useContext(AppContext);
   const [tab, setTab] = useState("Cart");
   const [showContrates, setShowContrates] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [creditCard, setCreditCard] = useState({});
+
   const cartIsEmpty = cart?.length === 0;
 
   const orderPrice = cart?.reduce((acc, product) => {
@@ -29,6 +38,39 @@ export function Cart() {
 
   const totalDiscount = (orderPrice * DISCOUNT_PERCENTAGE).toFixed(2);
   const totalOrder = (orderPrice + DELIVERY_TAX - totalDiscount).toFixed(2);
+
+  const buyCart = async () => {
+    try {
+      setLoading(true);
+
+      const creditCardValidation = util.isValidCreditCard(creditCard);
+      if (creditCardValidation.error) {
+        alert(creditCardValidation.message);
+        setLoading(false);
+        return false;
+      }
+      const { data } = await api.post("/orders", {
+        userId: user.id,
+        step: "waiting",
+        createdAt: moment().format(),
+        orderNumber: ORDER_NUMBER,
+        trackingNumber: new Date().getTime(),
+        totalValue: totalOrder,
+        totalItems: cart.length,
+      });
+
+      if (!data.id) {
+        alert("Order creation error... try again later..");
+        setLoading(false);
+        return false;
+      }
+
+      setShowContrates(true);
+    } catch (e) {
+      setLoading(false);
+      alert(e.message);
+    }
+  };
 
   return (
     <>
@@ -48,7 +90,7 @@ export function Cart() {
 
           <ScrollView hasPadding background="light">
             <Spacer size="20px" />
-            <Title variant="small">Order number is 458765432</Title>
+            <Title variant="small">Order number is {ORDER_NUMBER}</Title>
             <Spacer size="20px" />
             {tab === "Cart" && (
               <>
@@ -115,12 +157,16 @@ export function Cart() {
 
                 <Spacer size="30px" />
                 <PaymentForm
-                  onChange={(creditCardData) => console.log(creditCardData)}
+                  onChange={(creditCardData) => setCreditCard(creditCardData)}
                 />
                 <Spacer size="20px" />
 
-                <Button block onPress={() => setShowContrates(true)}>
-                  <Text color="light">Confirmation</Text>
+                <Button block onPress={() => buyCart()}>
+                  {loading ? (
+                    <ActivityIndicator />
+                  ) : (
+                    <Text color="light">Confirmation</Text>
+                  )}
                 </Button>
                 <Spacer size="50px" />
               </>

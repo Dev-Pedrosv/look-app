@@ -12,7 +12,6 @@ export function Home({ navigation: { navigate, replace } }) {
 
   const checkLogged = async () => {
     setLoading(true);
-
     const loggedUser = await AsyncStorage.getItem("@user");
     if (loggedUser) {
       setUser(JSON.parse(loggedUser));

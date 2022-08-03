@@ -3,46 +3,46 @@
     "stories": [
       {
         "id": 1,
-        "cover": "https://picsum.photos/500",
+        "cover": "https://picsum.photos/500/300.jpg",
         "owner": {
           "username": "teste123",
-          "photo": "https://picsum.photos/50"
+          "photo": "https://picsum.photos/50/50"
         },
         "createdAt": "2022-04-21T12:32"
       },
       {
         "id": 2,
-        "cover": "https://picsum.photos/500",
+        "cover": "https://picsum.photos/500/300.jpg",
         "owner": {
           "username": "teste123",
-          "photo": "https://picsum.photos/50"
+          "photo": "https://picsum.photos/50/50"
         },
         "createdAt": "2022-04-21T12:32"
       },
       {
         "id": 3,
-        "cover": "https://picsum.photos/500",
+        "cover": "https://picsum.photos/500/300.jpg",
         "owner": {
           "username": "teste123",
-          "photo": "https://picsum.photos/50"
+          "photo": "https://picsum.photos/50/50"
         },
         "createdAt": "2022-04-21T12:32"
       },
       {
         "id": 4,
-        "cover": "https://picsum.photos/500",
+        "cover": "https://picsum.photos/500/300.jpg",
         "owner": {
           "username": "teste123",
-          "photo": "https://picsum.photos/50"
+          "photo": "https://picsum.photos/50/50"
         },
         "createdAt": "2022-04-21T12:32"
       },
       {
         "id": 5,
-        "cover": "https://picsum.photos/500",
+        "cover": "https://picsum.photos/500/300.jpg",
         "owner": {
           "username": "teste123",
-          "photo": "https://picsum.photos/50"
+          "photo": "https://picsum.photos/50/50"
         },
         "createdAt": "2022-04-21T12:32"
       }
@@ -50,39 +50,39 @@
     "posts": [
       {
         "id": 1,
-        "cover": "https://picsum.photos/500",
+        "cover": "https://picsum.photos/500/300.jpg",
         "description": "Interview: Shoe Designer John Fluevog On New Book, Spirituality And ‘Slow Fashion’",
         "isLiked": false,
         "likeInfos": {
           "photos": [
-            "https://picsum.photos/50",
-            "https://picsum.photos/50",
-            "https://picsum.photos/50"
+            "https://picsum.photos/50/50",
+            "https://picsum.photos/50/50",
+            "https://picsum.photos/50/50"
           ],
           "description": "Liked by 10,098"
         },
         "owner": {
           "username": "teste123",
-          "photo": "https://picsum.photos/50"
+          "photo": "https://picsum.photos/50/50"
         },
         "createdAt": "2022-04-21T12:32"
       },
       {
         "id": 2,
-        "cover": "https://picsum.photos/500",
+        "cover": "https://picsum.photos/500/300.jpg",
         "description": "Interview: Shoe Designer John Fluevog On New Book, Spirituality And ‘Slow Fashion’",
         "isLiked": true,
         "likeInfos": {
           "photos": [
-            "https://picsum.photos/50",
-            "https://picsum.photos/50",
-            "https://picsum.photos/50"
+            "https://picsum.photos/50/50",
+            "https://picsum.photos/50/50",
+            "https://picsum.photos/50/50"
           ],
           "description": "Liked by 10,098"
         },
         "owner": {
           "username": "teste123",
-          "photo": "https://picsum.photos/50"
+          "photo": "https://picsum.photos/50/50"
         },
         "createdAt": "2022-04-21T12:32"
       }
@@ -91,8 +91,32 @@
   "categories": [
     {
       "id": 1,
-      "cover": "https://picsum.photos/500",
+      "cover": "https://picsum.photos/500/300.jpg",
       "title": "Womans",
+      "items": 1232
+    },
+    {
+      "id": 2,
+      "cover": "https://picsum.photos/500/300.jpg",
+      "title": "Mens",
+      "items": 1232
+    },
+    {
+      "id": 3,
+      "cover": "https://picsum.photos/500/300.jpg",
+      "title": "Kids",
+      "items": 1232
+    },
+    {
+      "id": 4,
+      "cover": "https://picsum.photos/500/300.jpg",
+      "title": "Cars",
+      "items": 1232
+    },
+    {
+      "id": 5,
+      "cover": "https://picsum.photos/500/300.jpg",
+      "title": "Perfum",
       "items": 1232
     }
   ],
@@ -108,6 +132,10 @@
       "name": "Omar Sampaio",
       "email": "omar@teste.com",
       "password": "123"
+    },
+    {
+      "{\"name\":\"Pedro\",\"email\":\"pedro@teste.com\",\"password\":\"123\"}": "",
+      "id": 3
     }
   ],
   "products": [
@@ -116,7 +144,7 @@
       "title": "Large striped cardigan",
       "price": 1080,
       "brand": "Raf Simons",
-      "cover": "https://picsum.photos/500",
+      "cover": "https://picsum.photos/500/300.jpg",
       "categoryId": 1,
       "type": "Shirts",
       "description": "Enjoy the beauty of italian cotton all over your body. This item will fit your body and warm you up all over and during spring. This item will fit your body and warm you up all over and during spring.  And over and over again, this is the text.",
@@ -144,7 +172,7 @@
       "title": "Gucci Balaclava",
       "price": 2500,
       "brand": "Gucci",
-      "cover": "https://picsum.photos/500",
+      "cover": "https://picsum.photos/500/300.jpg",
       "categoryId": 1,
       "type": "Balaclava",
       "description": "Awesome product.",
@@ -171,7 +199,7 @@
   "orders": [
     {
       "id": 1,
-      "userId": 8,
+      "userId": 1,
       "step": "waiting",
       "createdAt": "2022-04-21T12:32",
       "orderNumber": "1947034",
@@ -180,7 +208,7 @@
       "totalItems": 3
     },
     {
-      "userId": 8,
+      "userId": 1,
       "step": "waiting",
       "createdAt": "2022-04-22T11:42:10-03:00",
       "orderNumber": 1650637813697,
@@ -199,7 +227,7 @@
       "id": 3
     },
     {
-      "userId": 8,
+      "userId": 1,
       "step": "delivered",
       "createdAt": "2022-04-22T12:43:33-03:00",
       "orderNumber": 1650641635100,
@@ -209,7 +237,7 @@
       "id": 4
     },
     {
-      "userId": 8,
+      "userId": 1,
       "step": "canceled",
       "createdAt": "2022-04-22T12:43:33-03:00",
       "orderNumber": 1650641635100,
@@ -219,7 +247,7 @@
       "id": 4
     },
     {
-      "userId": 8,
+      "userId": 1,
       "step": "waiting",
       "createdAt": "2022-05-13T21:53:16-03:00",
       "orderNumber": 1652489372970,
@@ -229,7 +257,7 @@
       "id": 5
     },
     {
-      "userId": 8,
+      "userId": 1,
       "step": "waiting",
       "createdAt": "2022-08-03T02:23:19-03:00",
       "orderNumber": "1659493166074",

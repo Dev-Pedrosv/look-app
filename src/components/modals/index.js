@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { Box, Button, Cover, Spacer, Text, Title } from "../../styles";
 
 import checkCircle from "../../../assets/check-circle.png";
 export function ModalCongrats() {
+  const { navigate } = useNavigation();
   return (
     <Box
       hasPadding
@@ -29,8 +31,8 @@ export function ModalCongrats() {
       <Text>Your items are on the way and should arrive shortly</Text>
       <Spacer size="50px" />
 
-      <Button block>
-        <Text color="light">Confirmation</Text>
+      <Button block onPress={() => navigate("Orders")}>
+        <Text color="light">Track your order</Text>
       </Button>
     </Box>
   );
